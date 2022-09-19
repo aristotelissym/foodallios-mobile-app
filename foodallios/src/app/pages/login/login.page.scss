@@ -1,0 +1,19 @@
+ion-content {
+    --background: var(--ion-color-fasecondary);
+}
+
+ion-input {
+    --placeholder-opacity: 0.4;
+    margin-bottom: 4px;
+}
+
+#login-header {
+    font-size: 4em;
+    text-align: center;
+}
+
+#signup-link {
+    margin-top: 4%;
+    float: right;
+    color: bisque;
+}

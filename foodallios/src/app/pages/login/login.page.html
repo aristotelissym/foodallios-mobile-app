@@ -1,0 +1,29 @@
+<ion-content padding>
+  <form #form="ngForm">
+    <ion-grid>
+      <ion-row style="padding: 20%;"></ion-row>
+      <ion-row color="primary">
+        <ion-col size-md="6" size-lg="5" size-xs="12">
+          <div text-center>
+            <h3 id="login-header">Login</h3>
+          </div>
+          <div padding>
+            <ion-item>
+              <ion-input name="email" type="email" placeholder="your@email.com" spellcheck=true ngModel required></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-input name="password" type="password" placeholder="password" ngModel required></ion-input>
+            </ion-item>
+          </div>
+          <div padding>
+            <ion-button size="large" type="submit" [disabled]="form.invalid" expand="block">Login</ion-button>
+          </div>
+          <div id="signup-link">
+            <span>Not registered?  </span><span><a href="../signup/">Sign Up</a></span>
+          </div>
+        </ion-col>
+      </ion-row>
+
+    </ion-grid>
+  </form>
+</ion-content>
