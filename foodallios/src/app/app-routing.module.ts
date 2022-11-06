@@ -26,6 +26,18 @@ const routes: Routes = [
   {
     path: 'forgot-password',
     loadChildren: () => import('./pages/forgot-password/forgot-password.module').then( m => m.ForgotPasswordPageModule)
+  },
+  {
+    path: 'homepage',
+    loadChildren: () => import('./pages/customer/homepage/homepage.module').then( m => m.HomepagePageModule)
+  },
+  {
+    path: 'shop-product-list',
+    loadChildren: () => import('./pages/customer/shop-product-list/shop-product-list.module').then( m => m.ShopProductListPageModule)
+  },
+  {
+    path: 'shop-product-list-details',
+    loadChildren: () => import('./pages/customer/shop-product-list-details/shop-product-list-details.module').then( m => m.ShopProductListDetailsPageModule)
   }
 ];
 @NgModule({
