@@ -1,29 +1,31 @@
-<ion-content padding>
-  <form #form="ngForm">
-    <ion-grid>
-      <ion-row style="padding: 20%;"></ion-row>
-      <ion-row color="primary">
-        <ion-col size-md="6" size-lg="5" size-xs="12">
-          <div text-center>
-            <h3 id="login-header">Login</h3>
-          </div>
-          <div padding>
-            <ion-item>
-              <ion-input name="email" type="email" placeholder="your@email.com" spellcheck=true ngModel required></ion-input>
-            </ion-item>
-            <ion-item>
-              <ion-input name="password" type="password" placeholder="password" ngModel required></ion-input>
-            </ion-item>
-          </div>
-          <div padding>
-            <ion-button size="large" type="submit" [disabled]="form.invalid" expand="block">Login</ion-button>
-          </div>
-          <div id="signup-link">
-            <span>Not registered?  </span><span><a href="../signup/">Sign Up</a></span>
-          </div>
-        </ion-col>
-      </ion-row>
+<ion-header>
+  <ion-back-button></ion-back-button>
+</ion-header>
+<ion-content [fullscreen]="true" padding>
+  <ion-grid>
+    <ion-row>
+      <ion-title>Login</ion-title>
+    </ion-row>
+    <ion-row justify-content-center>
+      <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+          <ion-item class="form-group" lines="full">
+            <ion-label position="floating">Username</ion-label>
+            <ion-input type="text" class="form-control" id="username" placeholder="foodallios" formControlName="username">
+            </ion-input>
+          </ion-item>
+          <ion-item class="form-group">
+            <ion-label position="floating">Password</ion-label>
+            <ion-input type="password" class="form-control" id="password" placeholder="pass1234" formControlName="password">
+            </ion-input>
+          </ion-item>
+              <ion-button expand="block" type="submit">Login</ion-button>
+              <ion-button id="#signup-link" type="button" expand="block" color="light" fill="clear" [routerLink]="['/signup']">Not yet a member? Sign up!
+            </ion-button>
+        </form>
+      </ion-col>
 
-    </ion-grid>
-  </form>
+    </ion-row>
+
+  </ion-grid>
 </ion-content>

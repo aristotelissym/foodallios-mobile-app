@@ -1,9 +1,26 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>signup</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-header></ion-header>
+<ion-content [fullscreen]="true">
+  <ion-grid>
+    <ion-row>
+      <ion-title>Login</ion-title>
+    </ion-row>
+  </ion-grid>
+  <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+    <ion-item class="form-group" lines="full">
+      <ion-label position="floating">Username</ion-label>
+      <ion-input type="text" class="form-control" id="username" placeholder="foodallios" formControlName="username">
+      </ion-input>
+    </ion-item>
+    <ion-item class="form-group">
+      <ion-label position="floating">Password</ion-label>
+      <ion-input type="password" class="form-control" id="password" placeholder="pass1234" formControlName="password">
+      </ion-input>
+    </ion-item>
+    <ion-row>
+      <ion-col>
+        <ion-button expand="block" type="submit">Signup</ion-button>
 
-<ion-content>
-
+      </ion-col>
+    </ion-row>
+  </form>
 </ion-content>

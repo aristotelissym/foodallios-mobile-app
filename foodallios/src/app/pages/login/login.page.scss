@@ -1,19 +1,35 @@
+ion-header {
+    padding: 30%;
+    border-bottom-left-radius: 25%;
+    border-bottom-right-radius: 25%;
+    background: var(--ion-color-faprimary);
+}
+
 ion-content {
-    --background: var(--ion-color-fasecondary);
+    border-top-right-radius: 25px;
+    --background: #FFFDFA;
+    justify-items: center;
+
 }
 
-ion-input {
-    --placeholder-opacity: 0.4;
-    margin-bottom: 4px;
+ion-item {
+    color: black;
+    --background: #FFFDFA;
+    padding: 10%;
+    --color-focused: bisque;
 }
 
-#login-header {
-    font-size: 4em;
-    text-align: center;
-}
 
 #signup-link {
     margin-top: 4%;
-    float: right;
-    color: bisque;
+    --color: rgb(255, 140, 0);   
+}
+
+#username, #password {
+    color: black
+}
+
+#avatar-img {
+    
+    scale: 0.2;
 }

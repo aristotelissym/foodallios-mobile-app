@@ -1,0 +1,36 @@
+ion-header {
+    padding: 30%;
+    border-bottom-left-radius: 25%;
+    border-bottom-right-radius: 25%;
+    background: var(--ion-color-fasecondary);
+}
+
+ion-content {
+    border-top-right-radius: 25px;
+    --background: #FFFDFA;
+    justify-items: center;
+
+}
+
+ion-item {
+    color: black;
+    --background: #FFFDFA;
+    padding: 10%;
+    --color-focused: bisque;
+}
+
+
+#signup-link {
+    margin-top: 4%;
+    float: right;
+    color: bisque;
+}
+
+#username, #password {
+    color: black
+}
+
+#avatar-img {
+    
+    scale: 0.2;
+}

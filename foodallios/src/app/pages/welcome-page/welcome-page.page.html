@@ -1,4 +1,4 @@
-<ion-content fullscreen="true" >
+<ion-content >
   <ion-grid>
     <ion-row>
       <ion-col class="ion-justify-content-center">
@@ -7,9 +7,8 @@
     </ion-row>
     <ion-row>
       <ion-col class="ion-justify-content-center">
-        <ion-button shape="round" expand="block" id="login-button" href="../login/"><span>Log In</span></ion-button>
-        <span class="divider line one-line">or</span>
-        <ion-button shape="round" expand="block" id="signup-button" href="../signup/"><span>Sign Up</span></ion-button>
+        <ion-button shape="round" expand="block" id="login-button" [routerLink]="['login']"><span>Log In</span></ion-button>
+        <ion-button shape="round" expand="block" id="signup-button" [routerLink]="['signup']"><span>Sign Up</span></ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>
