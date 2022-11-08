@@ -17,6 +17,8 @@ export class SignupPage implements OnInit {
     this.signUpForm = this.fb.group({
       username: [null, Validators.required],
       password: [null, [Validators.required]],
+      email: [null, Validators.required],
+      role: ['CUSTOMER', Validators.required]
     });
   }
 
