@@ -8,22 +8,6 @@
  * For more information on global stylesheets, visit the documentation:
  * https://ionicframework.com/docs/layout/global-stylesheets
  */
- :root {
-    --ion-color-faprimary: #1ead50;
-    --ion-color-faprimary-rgb: rgb(31, 173, 81);
-    --ion-color-faprimary-contrast: #000000;
-    --ion-color-contrast-rgb: 0,0,0;
-    --ion-color-shade: #e0e000;
-    --ion-color-tint: #ffff1a;
-
-    --ion-color-fasecondary: #ff5e00;
-    --ion-color-fasecondary-rgb: rgb(255, 94, 0);
-    --ion-color-fasecondary-contrast: #000000;
-    --ion-color-contrast-rgb: 0,0,0;
-    --ion-color-shade: #e0e000;
-    --ion-color-tint: #ffff1a;
-
- }
 
  @import "./app/pages/welcome-page/welcome-page.page.scss";
 

@@ -74,6 +74,30 @@
   --ion-color-light-contrast-rgb: 0, 0, 0;
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
+
+  /**FoodAllios Primary**/
+  --ion-color-faprimary: #1ead50;
+  --ion-color-faprimary-rgb: rgb(31, 173, 81);
+  --ion-color-faprimary-contrast: #000000;
+  --ion-color-contrast-rgb: 0,0,0;
+  --ion-color-light-shade: #d7d8da;
+  --ion-color-light-tint: #f5f6f9;
+
+  /**FoodAllios Secondary**/
+  --ion-color-fasecondary: #ff5e00;
+  --ion-color-fasecondary-rgb: rgb(255, 94, 0);
+  --ion-color-fasecondary-contrast: #000000;
+  --ion-color-contrast-rgb: 0,0,0;
+  --ion-color-shade: #e0e000;
+  --ion-color-tint: #ffff1a;
+
+  --ion-color-lime: #94f600;
+  --ion-color-lime-rgb: 56, 128, 255;
+  --ion-color-lime-contrast: #ffffff;
+  --ion-color-lime-contrast-rgb: #000000;
+  --ion-color-lime-shade: #bcff58;
+  --ion-color-lime-tint: #d1ff8d;
+
 }
 
 @media (prefers-color-scheme: dark) {
