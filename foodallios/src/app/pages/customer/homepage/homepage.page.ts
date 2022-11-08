@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { IonModal } from '@ionic/angular';
 import { OverlayEventDetail } from '@ionic/core';
+import { Shop } from 'src/app/interfaces/shop.interface';
+import { HomepageService } from './homepage.service';
 
 @Component({
   selector: 'app-homepage',
@@ -12,10 +14,18 @@ export class HomepagePage implements OnInit {
 
   name: string;
   message = "Hello, World!";
+  shopList: Shop[];
 
-  constructor() { }
+  constructor(private service: HomepageService) { }
 
   ngOnInit() {
+    console.log("hi")
+    this.service.getShopList().subscribe(
+      shopList => { this.shopList = shopList; console.log(shopList)},
+      (err) => { throw new Error(err)  },
+      () => {}
+      )
+
   }
 
   cancel() {
