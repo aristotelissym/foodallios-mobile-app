@@ -14,7 +14,7 @@ export class LoginPage implements OnInit {
 
   loginForm: FormGroup;
   isDisabled: boolean = false;
-  user: Login //= { username: null, password: null};
+  user: Login;
 
   constructor(
     public fb: FormBuilder,

@@ -1,12 +1,9 @@
-ion-header {
-    padding: 30%;
-    border-bottom-left-radius: 25%;
-    border-bottom-right-radius: 25%;
-    background: var(--ion-color-faprimary);
+ion-toolbar {
+    --background: var(--ion-color-faprimary);
 }
 
 ion-content {
-    border-top-right-radius: 25px;
+    padding-top: 20%;
     --background: #FFFDFA;
     justify-items: center;
 
@@ -15,8 +12,12 @@ ion-content {
 ion-item {
     color: black;
     --background: #FFFDFA;
-    padding: 10%;
+    padding-top: 5%;
     --color-focused: bisque;
+}
+
+ion-avatar {
+    margin-left: 38%;
 }
 
 
@@ -27,9 +28,5 @@ ion-item {
 
 #username, #password {
     color: black
-}
 
-#avatar-img {
-    
-    scale: 0.2;
 }
