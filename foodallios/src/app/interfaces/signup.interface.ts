@@ -3,6 +3,8 @@ export interface SignUp {
     password: string;
     email: string;
     role: "CUSTOMER" | "OWNER";
+    createdBy: "signUpForm";
+    createdAt: Date;
     dateOfBirth: Date;
     
 }

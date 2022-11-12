@@ -28,13 +28,13 @@
     </ion-item>
     <ion-item class="form-group">
       <ion-select placeholder="Select Role" formControlName="role">
-        <ion-select-option value="customer">Customer</ion-select-option>
-        <ion-select-option value="owner">Shop Owner</ion-select-option>
+        <ion-select-option value="CUSTOMER">Customer</ion-select-option>
+        <ion-select-option value="OWNER">Shop Owner</ion-select-option>
       </ion-select>
     </ion-item>
     <ion-row>
       <ion-col>
-        <ion-button expand="block" type="submit">Signup</ion-button>
+        <ion-button expand="block" type="submit" [disabled]="!signUpForm.valid">Signup</ion-button>
         <ion-button id="#signup-link" type="button" expand="block" color="light" fill="clear" [routerLink]="['/login']">Already a member? Login!</ion-button>
       </ion-col>
     </ion-row>
