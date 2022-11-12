@@ -2,6 +2,6 @@ ion-content {
     --background: #FFFDFA;
 }
 
-ion-title {
-    text-align: center;
+ion-toolbar {
+    --background: var(--ion-color-faprimary)
 }

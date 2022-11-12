@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { IonModal } from '@ionic/angular';
-import { OverlayEventDetail } from '@ionic/core';
 import { Shop } from 'src/app/interfaces/shop.interface';
 import { HomepageService } from './homepage.service';
 
@@ -13,33 +13,23 @@ export class HomepagePage implements OnInit {
   @ViewChild(IonModal) modal: IonModal;
 
   name: string;
-  message = "Hello, World!";
   shopList: Shop[];
 
-  constructor(private service: HomepageService) { }
+  constructor(
+    private service: HomepageService,
+    private route: ActivatedRoute
+    ) { }
 
   ngOnInit() {
-    console.log("hi")
     this.service.getShopList().subscribe(
-      shopList => { this.shopList = shopList; console.log(shopList)},
+      shopList => { this.shopList = shopList; console.log(shopList) },
       (err) => { throw new Error(err)  },
       () => {}
       )
 
   }
 
-  cancel() {
-    this.modal.dismiss(null, 'cancel');
-  }
-
-  confirm() {
-    this.modal.dismiss(this.name, 'confirm');
-  }
-
-  onWillDismiss(event: Event) {
-    const ev = event as CustomEvent<OverlayEventDetail<string>>;
-    if(ev.detail.role === 'confirm') {
-      this.message = `Hello, ${ev.detail.data}`;
-    }
+  moreBtn(shopId: string) {
+    this.route.snapshot.paramMap.get(shopId)
   }
 }

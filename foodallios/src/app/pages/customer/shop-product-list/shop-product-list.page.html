@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons>
-    <ion-back-button slot="start" color="warning" text="df"></ion-back-button>
+    <ion-back-button slot="start"></ion-back-button>
     </ion-buttons>
     <ion-title>{{ shopTitle }}</ion-title>
   </ion-toolbar>
@@ -11,18 +11,18 @@
   <ion-grid>
     <ion-row>
       <ion-col>
-        <ion-card>
-          <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/card-media.png" />
+        <ion-card *ngFor="let product of productList; index as i">
           <ion-card-header>
-            <ion-card-subtitle>Gluten Free</ion-card-subtitle>
-            <ion-card-title>Peinirli</ion-card-title>
+            <ion-card-subtitle>{{ product.category }}</ion-card-subtitle>
+            <ion-card-title>{{ product.title }}</ion-card-title>
           </ion-card-header>
 
           <ion-card-content>
-            Hello
+            {{ product.description }}
           </ion-card-content>
 
           <ion-item>
+            <ion-label>Quantity: {{ product.quantity }}</ion-label>
             <ion-button fill="clear" slot="end" id="open-modal">more</ion-button>
           </ion-item>
         </ion-card>

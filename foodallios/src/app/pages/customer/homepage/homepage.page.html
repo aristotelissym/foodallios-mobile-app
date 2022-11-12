@@ -7,20 +7,20 @@
   <ion-grid>
     <ion-row>
       <ion-col>
-        <ion-card color="success" *ngFor="let shop of shopList; index as i">
+        <ion-card *ngFor="let shop of shopList; index as i">
           <!-- <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/card-media.png" /> -->
           <ion-card-header>
             <ion-card-subtitle>{{ shop.category }}</ion-card-subtitle>
             <ion-card-title>{{ shop.name }}</ion-card-title>
           </ion-card-header>
 
-          <!-- <ion-card-content>
-            {{ shop.address }}
+          <ion-card-content>
+            {{ shop.moto }}
           </ion-card-content>
-          <ion-card-content >Available Products: {{shop.availableProducts}} </ion-card-content> -->
 
           <ion-item>
-            <ion-button fill="clear" slot="end" [routerLink]="['../shop-product-list']">more</ion-button>
+            <ion-label>{{ shop.wrkHours }}</ion-label>
+            <ion-button fill="clear" slot="end" [routerLink]="['../shop-product-list', shop.id]" (click)="moreBtn(shop.id)">more</ion-button>
           </ion-item>
           
         </ion-card>

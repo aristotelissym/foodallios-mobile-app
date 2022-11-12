@@ -1,12 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Shop } from 'src/app/interfaces/shop.interface';
+import { Product } from 'src/app/interfaces/product.interface';
 
 @Injectable({
   providedIn: 'root'
 })
-export class HomepageService {
+export class ShopProductListService {
 
   private readonly app = 'http://localhost:3000'
 
@@ -14,8 +14,7 @@ export class HomepageService {
     private http: HttpClient
   ) { }
 
-  getShopList(): Observable<Shop[] | undefined> {
-    return this.http.get<Shop[]>(
-      this.app+'/shop');
+  getShopProductList(id: string): Observable<Product[] | undefined> {
+    return this.http.get<Product[]>(this.app+`/shop/${id}/product-list`);
   }
 }
