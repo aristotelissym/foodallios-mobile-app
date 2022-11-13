@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { WelcomePagePageRoutingModule } from './welcome-page-routing.module';
 
 import { WelcomePagePage } from './welcome-page.page';
+import { MaterialModule } from 'src/app/material.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    WelcomePagePageRoutingModule
+    WelcomePagePageRoutingModule,
+    MaterialModule
   ],
   declarations: [WelcomePagePage]
 })

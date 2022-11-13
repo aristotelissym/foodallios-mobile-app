@@ -1,17 +1,16 @@
+ion-img {
+    --background: black    
+}
+
 ion-content {
-    --background: var(--ion-color-faprimary);
+    --background: rgb(59,82,73);
+    --background: linear-gradient(0deg, rgb(143, 179, 57) 25%, rgba(30,173,80,1) 75%);
+    //--background: #F9F9F9;
 }
 
-#login-button {
-    --background: var(--ion-color-fasecondary);
-    
-    :hover {
-        --background: #edf4f5;
-        animation-duration: 4000ms;
-    }
-}
-
-#signup-button {
-    --background: #edf4f5;
-    --color: var(--ion-color-fasecondary);
+#login-button, #signup-button {
+    --color: F9F9F9;
+    --background: #7fe05b;
+    --background-hover: #50d022;
+    --transition: 4000ms;
 }

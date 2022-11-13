@@ -19,14 +19,14 @@ export class HomepagePage implements OnInit {
   constructor(
     private service: HomepageService,
     private route: ActivatedRoute
-    ) { }
+  ) { }
 
   ngOnInit() {
     this.service.getShopList().subscribe(
       shopList => { this.shopList = shopList; console.log(shopList) },
-      (err) => { throw new Error(err)  },
-      () => {}
-      )
+      (err) => { throw new Error(err) },
+      () => { }
+    )
 
   }
 

@@ -1,6 +1,6 @@
-<ion-header >
+<ion-header>
   <ion-toolbar>
-    <ion-back-button slot="start"></ion-back-button>
+    <ion-back-button slot="start" text="Back" color="dark"></ion-back-button>
     <ion-title>Login</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -15,21 +15,23 @@
         <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
           <ion-item class="form-group" lines="full">
             <ion-label position="floating">Username</ion-label>
-            <ion-input type="text" class="form-control" id="username" placeholder="foodallios" formControlName="username" required>
+            <ion-input type="text" class="form-control" id="username" placeholder="foodallios"
+              formControlName="username" required>
             </ion-input>
           </ion-item>
           <ion-item class="form-group">
             <ion-label position="floating">Password</ion-label>
-            <ion-input type="password" class="form-control" id="password" placeholder="pass1234" formControlName="password" required>
+            <ion-input type="password" class="form-control" id="password" placeholder="pass1234"
+              formControlName="password" required>
             </ion-input>
           </ion-item>
-              <ion-button expand="block" type="submit" color="primary" id="login-btn">Login</ion-button>
-              <ion-button id="#signup-link" type="button" expand="block" color="lime" fill="clear" [routerLink]="['/signup']">Not yet a member? Sign up!
-            </ion-button>
+          <ion-button expand="block" type="submit" id="login-btn">Login</ion-button>
+          <ion-button id="#signup-link" type="button" expand="block" color="lime" fill="clear"
+            [routerLink]="['/signup']">Not yet a member? Sign up!
+          </ion-button>
         </form>
       </ion-col>
-
     </ion-row>
-
   </ion-grid>
+  
 </ion-content>
