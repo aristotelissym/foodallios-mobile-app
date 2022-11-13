@@ -14,6 +14,7 @@ export class HomepagePage implements OnInit {
 
   name: string;
   shopList: Shop[];
+  userSession = sessionStorage.getItem('username');
 
   constructor(
     private service: HomepageService,
@@ -29,7 +30,7 @@ export class HomepagePage implements OnInit {
 
   }
 
-  moreBtn(shopId: string) {
-    this.route.snapshot.paramMap.get(shopId)
+  moreBtn(shop: Shop) {
+    this.route.snapshot.paramMap.get(shop.id)
   }
 }

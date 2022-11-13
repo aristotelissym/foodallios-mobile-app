@@ -1,6 +1,6 @@
 <ion-header [translucent]="true" collapse="fade">
   <ion-toolbar>
-    <ion-title>Food Allios</ion-title>
+    <ion-title>{{ userSession }}</ion-title>
   </ion-toolbar>
 </ion-header>
 <ion-content>
@@ -20,9 +20,10 @@
 
           <ion-item>
             <ion-label>{{ shop.wrkHours }}</ion-label>
-            <ion-button fill="clear" slot="end" [routerLink]="['../shop-product-list', shop.id]" (click)="moreBtn(shop.id)">more</ion-button>
+            <ion-button fill="clear" slot="end" [routerLink]="['../shop-product-list', shop.id]"
+              (click)="moreBtn(shop)">more</ion-button>
           </ion-item>
-          
+
         </ion-card>
       </ion-col>
     </ion-row>

@@ -1,13 +1,9 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-buttons>
-    <ion-back-button slot="start"></ion-back-button>
-    </ion-buttons>
-    <ion-title>{{ shopTitle }}</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
+  <ion-back-button slot="start"></ion-back-button>
+  <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/card-media.png" />
+  <ion-item>
+    <ion-label>{{ shopTitle }}</ion-label>
+  </ion-item>
   <ion-grid>
     <ion-row>
       <ion-col>
@@ -23,7 +19,7 @@
 
           <ion-item>
             <ion-label>Quantity: {{ product.quantity }}</ion-label>
-            <ion-button fill="clear" slot="end" id="open-modal">more</ion-button>
+            <ion-button fill="clear" slot="end" id="open-modal">Add to order</ion-button>
           </ion-item>
         </ion-card>
       </ion-col>

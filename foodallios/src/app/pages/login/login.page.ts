@@ -32,7 +32,7 @@ export class LoginPage implements OnInit {
 
   onSubmit() {
     this.service.login(this.loginForm.value).subscribe(
-    user => { this.user = user; },
+    user => { this.user = user; sessionStorage.setItem('username', this.loginForm.value.username) },
     () => { this.shared.presentToast('bottom', 'Invalid username or password!', 'global', 'danger') },
     () => { this.router.navigate(['/homepage'])}
     )
