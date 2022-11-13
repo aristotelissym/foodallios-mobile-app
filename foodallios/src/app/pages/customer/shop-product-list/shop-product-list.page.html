@@ -7,21 +7,18 @@
   <ion-grid>
     <ion-row>
       <ion-col>
-        <ion-card *ngFor="let product of productList; index as i">
-          <ion-card-header>
-            <ion-card-subtitle>{{ product.category }}</ion-card-subtitle>
-            <ion-card-title>{{ product.title }}</ion-card-title>
-          </ion-card-header>
-
-          <ion-card-content>
+        <mat-card *ngFor="let product of productList; index as i" id="product-card">
+          <mat-card-title-group>
+            <mat-card-subtitle>{{ product.category }}</mat-card-subtitle>
+            <mat-card-title>{{ product.title }}</mat-card-title>
+          </mat-card-title-group>
+          <mat-card-content>
             {{ product.description }}
-          </ion-card-content>
-
-          <ion-item>
-            <ion-label>Quantity: {{ product.quantity }}</ion-label>
-            <ion-button fill="clear" slot="end" id="open-modal">Add to order</ion-button>
-          </ion-item>
-        </ion-card>
+          </mat-card-content>
+          <mat-card-footer>
+            <button mat-flat-button id="open-modal">Add to Order</button>
+          </mat-card-footer>
+        </mat-card>
       </ion-col>
     </ion-row>
   </ion-grid>
