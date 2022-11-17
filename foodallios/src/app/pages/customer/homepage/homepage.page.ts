@@ -12,6 +12,11 @@ import { HomepageService } from './homepage.service';
 export class HomepagePage implements OnInit {
   @ViewChild(IonModal) modal: IonModal;
 
+  slideOpts = {
+    initialSlide: 1,
+    speed: 400
+  };
+
   name: string;
   shopList: Shop[];
   userSession = sessionStorage.getItem('username');

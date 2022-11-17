@@ -1,12 +1,42 @@
-ion-content {
-    --background: #FFFDFA;
+ion-toolbar {
+    --color: #131313;
+    --background: var(--ion-color-faprimary);
 }
 
-ion-toolbar {
-    --background: var(--ion-color-faprimary)
+ion-content {
+    --background: #131313;
+    // --color: rgb(203, 122, 0);
+}
+
+
+img {
+    z-index: -1;
+}
+
+.example-header-image {
+    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    background-size: cover;
+}
+
+
+#title-card {
+    color:rgb(255, 251, 240);
+    background-color: #131313;
+    box-shadow: none;
 }
 
 #product-card {
-    background-color: brown;
+    // background-color: rgb(46, 46, 46);
+    background-color: #131313;
+    color:rgb(255, 251, 240);
     margin-bottom: 4px;
+    box-shadow: none;
+    border-left: solid 4px  var(--ion-color-faprimary);
 }
+
+
+.counter__section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }

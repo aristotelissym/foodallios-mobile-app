@@ -4,5 +4,24 @@ ion-toolbar {
 }
 
 ion-content {
-    --background: #FFFDFA;
+    --background: #131313;
+    --color: white;
+}
+
+ion-grid {
+    --ion-grid-columns: 1
+    --ion-grid-width: 100%;
+}
+
+.example-header-image {
+    background-image: url('https://ionicframework.com/docs/img/demos/card-media.png');
+    background-size: cover;
+}
+
+#shop-card {
+    // background-color: rgb(46, 46, 46);
+    background-color: #151515;
+    color:rgb(255, 251, 240);
+    margin-bottom: 4px;
+
 }

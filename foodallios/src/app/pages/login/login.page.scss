@@ -1,12 +1,13 @@
-ion-toolbar {
-    --background: var(--ion-color-faprimary);
-}
-
 ion-content {
     padding-top: 20%;
     --background: #FFFDFA;
     justify-items: center;
 
+}
+
+ion-toolbar {
+    --background: #FFFDFA;
+    --color: #222428;
 }
 
 ion-item {
@@ -20,9 +21,7 @@ ion-avatar {
     margin-left: 38%;
 }
 
-#login-btn {
-    
-}
+
 
 
 #signup-link {

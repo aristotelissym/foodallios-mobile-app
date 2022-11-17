@@ -1,47 +1,64 @@
+<ion-header :translucent="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="Places"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
 <ion-content>
-  <ion-back-button slot="start"></ion-back-button>
-  <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/card-media.png" />
-  <ion-item>
-    <ion-label>{{ shopTitle }}</ion-label>
-  </ion-item>
+  <!-- <ion-img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/card-media.png"></ion-img> -->
   <ion-grid>
-    <ion-row>
-      <ion-col>
-        <mat-card *ngFor="let product of productList; index as i" id="product-card">
-          <mat-card-title-group>
-            <mat-card-subtitle>{{ product.category }}</mat-card-subtitle>
-            <mat-card-title>{{ product.title }}</mat-card-title>
-          </mat-card-title-group>
-          <mat-card-content>
-            {{ product.description }}
-          </mat-card-content>
-          <mat-card-footer>
-            <button mat-flat-button id="open-modal">Add to Order</button>
-          </mat-card-footer>
-        </mat-card>
-      </ion-col>
-    </ion-row>
+    <ion-col>
+      <mat-card id="title-card">
+        <mat-card-title-group>
+          <mat-card-title>Title Card</mat-card-title>
+          <div mat-card-avatar class="example-header-image"></div>
+        </mat-card-title-group>
+        <mat-card-content>Address:</mat-card-content>
+        <mat-card-content>Work Hours:</mat-card-content>
+      </mat-card>
+    </ion-col>
+    <h2 style="margin-left: 4%;" style="padding-bottom: 4px; border-bottom: solid 1px #7d7d7d; border-radius: 4%;">What
+      is Left?</h2>
+    <mat-card *ngFor="let product of productList; index as i" id="product-card">
+      <mat-card-title-group style="margin-bottom: 2px;">
+        <mat-card-title>{{ product.title }}</mat-card-title>
+        <div mat-card-avatar class="example-header-image"></div>
+      </mat-card-title-group>
+      <mat-card-content (click)="getProductDetails(product.shopId, product.id)">
+        {{ product.description }}
+      </mat-card-content>
+    </mat-card>
   </ion-grid>
 
-  <ion-modal trigger="open-modal" (willDismiss)="onWillDismiss($event)">
+  <ion-modal [initialBreakpoint]="0.65" [breakpoints]="[0, 0.50,0.75, 1]" (willDismiss)="onWillDismiss($event)"
+    [isOpen]="$isOpen">
     <ng-template>
-      <ion-header>
-        <ion-toolbar>
-          <ion-buttons slot="start">
-            <ion-button (click)="cancel()">Cancel</ion-button>
-          </ion-buttons>
-          <ion-title>Welcome</ion-title>
-          <ion-buttons slot="end">
-            <ion-button (click)="confirm()" [strong]="true">Confirm</ion-button>
-          </ion-buttons>
-        </ion-toolbar>
-      </ion-header>
+      <ion-img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/card-media.png"></ion-img>
+
       <ion-content class="ion-padding">
-        <ion-item>
-          <ion-label position="stacked">Enter your name</ion-label>
-          <ion-input type="text" placeholder="Your name" [(ngModel)]="name"></ion-input>
-        </ion-item>
+        <h3>{{ productDetails.title }}</h3>
+        <h4>Description: {{ productDetails.description }}</h4>
+        <h5>Price: {{ productDetails.price }}</h5>
+          <ion-col>
+            <div class="counter__section">
+              <button mat-mini-fab (click)="decrement()" style="background-color: rgb(100, 100, 100);">-</button>
+              <p style="margin-top: 15px;">{{count}}</p>
+              <button mat-mini-fab (click)="increment(productDetails.quantity)"
+                style="background-color: rgb(100, 100, 100);; justify-content: center;">
+                +
+              </button>
+            </div>
+          </ion-col>
+          <ion-col>
+
+            <ion-button expand="block"
+              style="--top-padding: 50px; --border-color: var(--ion-color-fasecondary); --border-width: 4px; --color: var(--ion-color-fasecondary); --background: hwb(44 71% 0%);">
+              Order</ion-button>
+          </ion-col>
       </ion-content>
+
     </ng-template>
   </ion-modal>
 </ion-content>

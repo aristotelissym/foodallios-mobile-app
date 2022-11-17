@@ -9,13 +9,16 @@ import { ShopProductListPageRoutingModule } from './shop-product-list-routing.mo
 import { ShopProductListPage } from './shop-product-list.page';
 import { MaterialModule } from 'src/app/material.module';
 
+
+
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
     ShopProductListPageRoutingModule,
-    MaterialModule
+    MaterialModule,
   ],
   declarations: [ShopProductListPage]
 })
