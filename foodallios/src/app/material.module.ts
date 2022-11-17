@@ -9,7 +9,9 @@ import { MatInputModule } from "@angular/material/input"
 import { MatStepperModule } from "@angular/material/stepper"
 import { MatIconModule } from "@angular/material/icon"
 import { MatDividerModule } from "@angular/material/divider"
-import { MatCardModule, MatCardActions, MatCardSubtitle  } from "@angular/material/card"
+import { MatCardModule } from "@angular/material/card"
+import { MatListModule } from "@angular/material/list"
+import { MatGridListModule } from "@angular/material/grid-list"
 
 
 @NgModule({
@@ -26,7 +28,9 @@ import { MatCardModule, MatCardActions, MatCardSubtitle  } from "@angular/materi
     MatSortModule,
     MatCardModule,
     MatDividerModule,
-    
+    MatListModule,
+    MatGridListModule
+   
   ]
 })
 export class MaterialModule {}
