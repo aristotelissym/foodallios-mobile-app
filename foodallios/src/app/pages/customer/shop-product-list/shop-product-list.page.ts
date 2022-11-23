@@ -2,8 +2,10 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { IonModal } from '@ionic/angular';
 import { OverlayEventDetail } from '@ionic/core';
+import { TableOrder } from 'src/app/interfaces/tableOrder.interface';
 import { Product } from 'src/app/interfaces/product.interface';
 import { Shop } from 'src/app/interfaces/shop.interface';
+import { SharedFuns } from 'src/app/shared/shared';
 import { ShopProductListService } from './shop-product-list.service';
 
 @Component({
@@ -18,7 +20,9 @@ export class ShopProductListPage implements OnInit {
   //Table to be field for the get request with all the products.
   //Table with shop details to preview
   productList: Product[];
-  //shopDetails: Shop = {name: "Dummy Name"}
+
+  //addToCart details
+  productToCart: TableOrder;
 
   //To be used by the modal, see the details and place the order.
   productDetails: Product = { id: '', shopId: '', title: '', category: '', quantity: null, price: null, description: '' };
@@ -34,9 +38,13 @@ export class ShopProductListPage implements OnInit {
   $isOpen: boolean = false;
 
   //counter for modal
-  count: number = 0;
+  count: number = 1;
 
-  constructor(private service: ShopProductListService, private route: ActivatedRoute) { }
+  constructor(
+    private service: ShopProductListService,
+    private route: ActivatedRoute,
+    private sharedFuns: SharedFuns,
+    ) { }
 
   ngOnInit() {
     //fetching shop data from homepage
@@ -50,6 +58,8 @@ export class ShopProductListPage implements OnInit {
       err => { throw new Error(err) },
       () => { }
     )
+
+    console.log(sessionStorage.getItem('productCart'))
   }
 
   getProductDetails(shopId: string, productId: string) {
@@ -60,7 +70,20 @@ export class ShopProductListPage implements OnInit {
     )
   }
 
-  placeOrder() {}
+  addToCart(title, productId, itemPrice) {
+    this.productToCart = 
+    {
+      title: title,
+      productId: productId,
+      customerId: sessionStorage.getItem('customerId'),
+      quantity: this.count,
+      orderPrice: itemPrice*this.count,
+      purchaseId: sessionStorage.getItem('purchaseId'),
+      createdAt: new Date()
+    }
+    this.sharedFuns.updateSessionStorage('productCart', this.productToCart)
+    console.log(sessionStorage.getItem('productCart'))
+  }
 
   cancel() {
     this.modal.dismiss(null, 'cancel');
@@ -83,7 +106,7 @@ export class ShopProductListPage implements OnInit {
   }
 
   decrement() {
-    if(this.count != 0){
+    if(this.count != 1){
       this.count--;
     }
   }

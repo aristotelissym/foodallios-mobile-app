@@ -46,16 +46,16 @@
               <button mat-mini-fab (click)="decrement()" style="background-color: rgb(100, 100, 100);">-</button>
               <p style="margin-top: 15px;">{{count}}</p>
               <button mat-mini-fab (click)="increment(productDetails.quantity)"
-                style="background-color: rgb(100, 100, 100);; justify-content: center;">
+                style="background-color: rgb(100, 100, 100); justify-content: center;">
                 +
               </button>
             </div>
           </ion-col>
           <ion-col>
 
-            <ion-button expand="block"
-              style="--top-padding: 50px; --border-color: var(--ion-color-fasecondary); --border-width: 4px; --color: var(--ion-color-fasecondary); --background: hwb(44 71% 0%);">
-              Order</ion-button>
+            <ion-button expand="block" (click)="addToCart(productDetails.title, productDetails.id, productDetails.price)"
+              style="margin-left: 10px; margin-right: 10px; --top-padding: 50px; --border-color: var(--ion-color-fasecondary); --border-width: 4px; --color: var(--ion-color-fasecondary); --background: hwb(44 71% 0%);">
+              Add to Cart</ion-button>
           </ion-col>
       </ion-content>
 
