@@ -4,9 +4,7 @@ import { ToastController } from "@ionic/angular";
 @Injectable()
 export class SharedFuns {
 
-    constructor (private toastController: ToastController) {
-
-    }
+    constructor (private toastController: ToastController) {}
 
     async presentToast(position: 'top' | 'middle' | 'bottom', err: string, ic: string, color: string) {
         const toast = await this.toastController.create({
@@ -19,5 +17,11 @@ export class SharedFuns {
         })
     
         await toast.present();
-      }
+    }
+
+    async updateSessionStorage(sesName , value) {
+      let sesStore = JSON.parse(sessionStorage.getItem(sesName));
+      sesStore.push(value)
+      sessionStorage.setItem(sesName, JSON.stringify(sesStore));
+    }
 }
