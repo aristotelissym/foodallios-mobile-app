@@ -25,7 +25,6 @@ export class SignupPage implements OnInit {
     ) { }
 
   ngOnInit() {
-    console.log(formatDate(Date.now(), 'yyyy-MM-ddTHH:MM:SS', 'en'))
     this.signUpForm = this.fb.group({
       username: [null, Validators.required],
       password: [null, [Validators.required]],

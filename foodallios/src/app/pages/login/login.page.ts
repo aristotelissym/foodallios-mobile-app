@@ -32,9 +32,14 @@ export class LoginPage implements OnInit {
 
   onSubmit() {
     this.service.login(this.loginForm.value).subscribe(
-    user => { this.user = user; sessionStorage.setItem('username', this.loginForm.value.username) },
-    () => { this.shared.presentToast('bottom', 'Invalid username or password!', 'global', 'danger') },
-    () => { this.router.navigate(['/homepage'])}
+      user => { 
+        this.user = user; sessionStorage.setItem('username', this.loginForm.value.username); 
+        sessionStorage.setItem('productCart', JSON.stringify([])); 
+        sessionStorage.setItem('customerId', 'd90bd85c-e7f1-4867-a85f-088602ce20d9');
+        sessionStorage.setItem('purchaseId', 'a089edbc-fcf5-4ed7-a0b4-019817977420');
+      },
+      () => { this.shared.presentToast('bottom', 'Invalid username or password!', 'global', 'danger') },
+      () => { this.router.navigate(['/homepage']) }
     )
 
   }
