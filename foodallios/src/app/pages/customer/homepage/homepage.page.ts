@@ -28,6 +28,7 @@ export class HomepagePage implements OnInit {
 
   productCart: TableOrder[] = [];
   cartItem: TableOrder;
+  cart = [];
 
   //Temp helper to init purchase.
   init_purchase = {
@@ -37,7 +38,6 @@ export class HomepagePage implements OnInit {
     isValid: false,
     createdAt: new Date
   }
-  purchaseId;
   purchase: Purchase;
 
   //Constructor.
@@ -48,39 +48,63 @@ export class HomepagePage implements OnInit {
 
   ngOnInit() {
     this.service.getShopList().subscribe(
-      shopList => { this.shopList = shopList; console.log(shopList) },
-      (err) => { throw new Error(err) },
+      shopList => {
+        this.shopList = shopList; console.log(shopList)
+      },
+      (err) => {
+        throw new Error(err)
+      },
       () => { }
     )
 
+    this.service.postPurchase(this.init_purchase).subscribe(
+      (purchase: any) => {
+        this.purchase = { ...purchase };
+        sessionStorage.setItem('purchaseId', purchase.raw[0].id);
+        console.log(sessionStorage.getItem('purchaseId'));
+
+      },
+      (err) => {
+        throw Error("something went wrong " + err)
+      }
+    );
+  
   }
 
-  async submitOrder(sessName: string) {
+  submitOrder(sessName: string) {
+    //console.log(sessionStorage.getItem('customerId'))
+    //console.log(this.validatePurchaseForm)
 
-    if (sessName) {
-      this.service.postPurchase(this.init_purchase).subscribe(
-        (purchase: any) => {
-          this.purchase = { ...purchase };
-          console.log(purchase.raw[0].id);
-          this.purchaseId = purchase //!!!!!!! <===== set Session Storage 
-        }, 
-        (err) => { 
-          throw Error("something went wrong " +err)
-        }
-      );
+    this.cart = JSON.parse(sessionStorage.getItem(sessName))
+    //Initialize the purchase entity from which the QR will be created
+    let validatePurchaseForm = {
+      id: sessionStorage.getItem('purchaseId'),
+      isValid: true,
+      totalPrice: 0,
+      createdAt: Date,
     }
 
-    let cart = JSON.parse(sessionStorage.getItem(sessName))
 
-    cart.forEach((tableOrder: TableOrder) => {
-      //console.log('hi ' + JSON.stringify(tableOrder))
+    console.log(this.cart)
+
+    //Create Table Orders, which will be added in the purchaseId entity
+    this.cart.forEach((tableOrder: TableOrder) => {
+      validatePurchaseForm.totalPrice += tableOrder.orderPrice;
+      console.log('hi ' + JSON.stringify(tableOrder.purchaseId))
       this.service.postTableOrder(tableOrder).subscribe(
-        cartItem => {this.cartItem = cartItem
+        cartItem => {
+          //this.cartItem = cartItem;
+          
         },
-        (err) =>  new Error("Something happened " +err)
+        (err) => new Error("Something happened " + err)
       );
     }
     )
+
+    console.log(validatePurchaseForm)
+    this.service.validPurchase(validatePurchaseForm).subscribe(updatedPurchaseForm => console.log(updatedPurchaseForm))
+
+    
   }
 
   //Get product list of Shop {{ shop.id }}
@@ -105,7 +129,7 @@ export class HomepagePage implements OnInit {
   //Helpers for modal
   onWillDismiss(event: Event) {
     const ev = event as CustomEvent<OverlayEventDetail<string>>;
-    
+
     this.$isOpen = false;
     this.productCart = [];
   }

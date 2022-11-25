@@ -1,10 +1,11 @@
 export interface TableOrder {
 
     productId: string;
-    customerId: string;
+    purchaseId?: string;
+    customer: string;
     title: string;
     quantity: number;
     orderPrice: number;
     createdAt: Date;
-    purchaseId: string;
+    
 }
