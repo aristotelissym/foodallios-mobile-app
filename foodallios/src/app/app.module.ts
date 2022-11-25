@@ -14,7 +14,9 @@ import { MaterialModule } from './material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [
+    AppComponent
+  ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(),
@@ -25,10 +27,20 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MaterialModule,
     BrowserAnimationsModule,
   ],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, SharedFuns, NavParams, ModalController],
-  bootstrap: [AppComponent],
+  providers: [
+    { 
+      provide: RouteReuseStrategy, useClass: IonicRouteStrategy 
+    },
+    SharedFuns,
+    NavParams,
+    ModalController
+  ],
+  bootstrap: [
+    AppComponent
+  ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA
   ]
 })
+
 export class AppModule {}
