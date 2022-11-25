@@ -24,4 +24,5 @@ export class SharedFuns {
       sesStore.push(value)
       sessionStorage.setItem(sesName, JSON.stringify(sesStore));
     }
+
 }

@@ -4,7 +4,6 @@ import { IonModal } from '@ionic/angular';
 import { OverlayEventDetail } from '@ionic/core';
 import { TableOrder } from 'src/app/interfaces/tableOrder.interface';
 import { Product } from 'src/app/interfaces/product.interface';
-import { Shop } from 'src/app/interfaces/shop.interface';
 import { SharedFuns } from 'src/app/shared/shared';
 import { ShopProductListService } from './shop-product-list.service';
 
@@ -75,10 +74,10 @@ export class ShopProductListPage implements OnInit {
     {
       title: title,
       productId: productId,
-      customerId: sessionStorage.getItem('customerId'),
+      purchaseId: sessionStorage.getItem('purchaseId'),
+      customer: sessionStorage.getItem('customerId'),
       quantity: this.count,
       orderPrice: itemPrice*this.count,
-      purchaseId: sessionStorage.getItem('purchaseId'),
       createdAt: new Date()
     }
     this.sharedFuns.updateSessionStorage('productCart', this.productToCart)
