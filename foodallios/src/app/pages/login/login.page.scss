@@ -1,18 +1,18 @@
 ion-content {
-    padding-top: 20%;
-    --background: #FFFDFA;
+    padding-top: 40%;
+    --background: #f3f2f1;
     justify-items: center;
 
 }
 
 ion-toolbar {
-    --background: #FFFDFA;
+    --background: rgba(30,173,80,1);
     --color: #222428;
 }
 
 ion-item {
     color: black;
-    --background: #FFFDFA;
+    --background: #f3f2f1;
     padding-top: 5%;
     --color-focused: bisque;
 }
@@ -21,12 +21,15 @@ ion-avatar {
     margin-left: 38%;
 }
 
-
-
-
-#signup-link {
-    margin-top: 4%;
-    --color: rgb(255, 140, 0);   
+#login-title {
+    text-align: center;
+    font-weight: 400;
+    font-size: 38px;
+    background: -webkit-linear-gradient(rgb(143, 179, 57), rgba(30,173,80,1));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    padding: 20px;
 }
 
 #username, #password {

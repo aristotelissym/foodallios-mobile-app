@@ -6,6 +6,8 @@
 </ion-header>
 <ion-content [fullscreen]="true" padding>
   <ion-grid>
+    <h1 id="login-title">Login</h1>
+    <mat-divider></mat-divider>
     <ion-row justify-content-center>
 
       <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
@@ -22,10 +24,11 @@
               formControlName="password" required>
             </ion-input>
           </ion-item>
-          <ion-button expand="block" type="submit" id="login-btn">Login</ion-button>
-          <ion-button id="#signup-link" type="button" expand="block" color="lime" fill="clear"
-            [routerLink]="['/signup']">Not yet a member? Sign up!
-          </ion-button>
+          <button mat-raised-button id="login-btn"
+                  style="align-items: center; width: 100%; margin-top: 4%; background-color: rgba(30,173,80,1); color: antiquewhite;">Login</button>
+                  <button mat-button id="#signup-link"
+                  style="align-items: center; width: 100%; color: orangered; margin-top: 4%;" [routerLink]="['/signup']">Not yet a member? Sign up!
+          </button>
         </form>
       </ion-col>
     </ion-row>

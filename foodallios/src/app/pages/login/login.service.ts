@@ -11,11 +11,11 @@ export class LoginService {
   private readonly app = 'http://localhost:3000'
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
   ) { }
 
   login(form: Login): Observable<any> {
-    return this.http.post(this.app+'/auth/login', form)
+    return  this.http.post(this.app+'/auth/login', form)
     
   }
 }
