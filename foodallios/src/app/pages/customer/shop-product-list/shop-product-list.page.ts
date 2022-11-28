@@ -28,7 +28,7 @@ export class ShopProductListPage implements OnInit {
 
   //Fetched data from homepage
   shopId: string;
-  wrkHour: string;
+  wrkHours: string;
   availableProducts: string;
   address: string;
   shopName: string;
@@ -47,10 +47,10 @@ export class ShopProductListPage implements OnInit {
 
   ngOnInit() {
     //fetching shop data from homepage
-    this.route.paramMap.subscribe(data => { this.shopId = data.get('id'); })
-    // this.route.paramMap.subscribe(data => this.wrkHour = data.get('wrkHour'))
-    // this.route.paramMap.subscribe(data => this.availableProducts = data.get('availableProducts'))
-    // this.route.paramMap.subscribe(data => this.address = data.get('address'))
+    this.route.paramMap.subscribe(data => { this.shopId = data.get('id'); console.log(data)})
+    this.route.paramMap.subscribe(data => this.shopName = data.get('0'))//The Shop Name is passed through params as the first item.
+    this.route.paramMap.subscribe(data => this.wrkHours = data.get('1'))//The Shop WrkHours is passed through params as the second item.
+    this.route.paramMap.subscribe(data => this.address = data.get('2'))//The Shop  is passed through params as the third item.
 
     this.service.getShopProductList(this.shopId).subscribe(
       productList => { this.productList = productList; console.log(productList) },
