@@ -13,7 +13,9 @@
       <mat-card id="title-card">
         <mat-card-title-group>
           <mat-card-title>{{ shopName }}</mat-card-title>
-          <div mat-card-avatar class="example-header-image"></div>
+          <div mat-card-avatar>
+            <img src="https://d1jpzjn3hhxcck.cloudfront.net/stores/images/d4c1b9bb26c89472599332f2b74923ba.jpg">
+          </div>
         </mat-card-title-group>
         <mat-card-content>Address: {{ address }}</mat-card-content>
         <mat-card-content>Working Hours: {{ wrkHours }}</mat-card-content>
@@ -21,6 +23,7 @@
     </ion-col>
     <h2 style="margin-left: 4%;" style="padding-bottom: 4px; border-bottom: solid 1px #7d7d7d; border-radius: 4%;">What
       is Left?</h2>
+    <h1 *ngIf="productList==null">We're sorry! There are no available items at the moment</h1>
     <mat-card *ngFor="let product of productList; index as i" id="product-card">
       <mat-card-title-group style="margin-bottom: 2px;">
         <mat-card-title>{{ product.title }}</mat-card-title>
