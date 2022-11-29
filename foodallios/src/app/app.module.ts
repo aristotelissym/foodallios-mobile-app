@@ -12,6 +12,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedFuns } from './shared/shared';
 import { MaterialModule } from './material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { QRCodeModule } from 'angularx-qrcode';
+import { IonicStorageModule } from '@ionic/storage-angular';
+import { Drivers, Storage } from '@ionic/storage';
 
 @NgModule({
   declarations: [
@@ -26,6 +29,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ReactiveFormsModule,
     MaterialModule,
     BrowserAnimationsModule,
+    QRCodeModule,
+    IonicStorageModule.forRoot()
   ],
   providers: [
     { 
@@ -33,7 +38,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     },
     SharedFuns,
     NavParams,
-    ModalController
+    ModalController,
+    Storage
   ],
   bootstrap: [
     AppComponent
