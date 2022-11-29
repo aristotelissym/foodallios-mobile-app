@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { IonModal } from '@ionic/angular';
 import { Shop } from 'src/app/interfaces/shop.interface';
 import { HomepageService } from './homepage.service';
@@ -25,10 +25,13 @@ export class HomepagePage implements OnInit {
   shopList: Shop[];
   userSession = sessionStorage.getItem('username');
   $isOpen: boolean = false;
+  showFiller: boolean = false;
 
   productCart: TableOrder[] = [];
   cartItem: TableOrder;
   cart = [];
+  qrData?;
+  cartSize: number = (sessionStorage.getItem('productCart')).length;
 
   //Temp helper to init purchase.
   init_purchase = {
@@ -43,7 +46,8 @@ export class HomepagePage implements OnInit {
   //Constructor.
   constructor(
     private service: HomepageService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -61,14 +65,15 @@ export class HomepagePage implements OnInit {
       (purchase: any) => {
         this.purchase = { ...purchase };
         sessionStorage.setItem('purchaseId', purchase.raw[0].id);
-        console.log(sessionStorage.getItem('purchaseId'));
+        //console.log(sessionStorage.getItem('purchaseId'));
 
       },
       (err) => {
         throw Error("something went wrong " + err)
       }
     );
-  
+
+
   }
 
   submitOrder(sessName: string) {
@@ -85,26 +90,24 @@ export class HomepagePage implements OnInit {
     }
 
 
-    console.log(this.cart)
+    //console.log(this.cart)
 
     //Create Table Orders, which will be added in the purchaseId entity
     this.cart.forEach((tableOrder: TableOrder) => {
+      
       validatePurchaseForm.totalPrice += tableOrder.orderPrice;
-      console.log('hi ' + JSON.stringify(tableOrder.purchaseId))
+      
       this.service.postTableOrder(tableOrder).subscribe(
-        cartItem => {
-          //this.cartItem = cartItem;
-          
-        },
+        () => { /*this.cartItem = cartItem;*/ },
         (err) => new Error("Something happened " + err)
       );
     }
     )
 
-    console.log(validatePurchaseForm)
+    //console.log(validatePurchaseForm)
     this.service.validPurchase(validatePurchaseForm).subscribe(updatedPurchaseForm => console.log(updatedPurchaseForm))
-
     
+    this.qrData = JSON.stringify(this.service.getUsersPurchase(sessionStorage.getItem('purchaseId')));
   }
 
   //Get product list of Shop {{ shop.id }}

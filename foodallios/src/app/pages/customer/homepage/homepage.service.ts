@@ -38,4 +38,7 @@ export class HomepageService {
 
   //Final step before QR code.
   //isValid becomes true. Then QR will be generated. PUT call.
+  getUsersPurchase(id: string): Observable<Purchase | undefined> {
+    return this.http.get<Purchase>(this.app+`/purchases/${id}`);
+  }
 }

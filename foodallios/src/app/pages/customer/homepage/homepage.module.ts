@@ -8,8 +8,9 @@ import { HomepagePageRoutingModule } from './homepage-routing.module';
 
 import { HomepagePage } from './homepage.page';
 import { MaterialModule } from 'src/app/material.module';
-import { MatCardSubtitle  } from "@angular/material/card";
-import { MatProgressBar } from "@angular/material/progress-bar";
+import {MatListModule} from '@angular/material/list';
+import { QRCodeModule } from 'angularx-qrcode';
+
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import { MatProgressBar } from "@angular/material/progress-bar";
     IonicModule,
     HomepagePageRoutingModule,
     MaterialModule,
+    QRCodeModule,
   ],
   declarations: [HomepagePage]
 })
