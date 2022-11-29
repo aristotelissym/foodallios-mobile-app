@@ -10,8 +10,8 @@
     <mat-divider></mat-divider>
     <ion-row justify-content-center>
 
-      <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
-        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <ion-col size-md="6" size-lg="5" size-xs="12">
+        <form style="padding: 5%;" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
           <ion-item class="form-group" lines="full">
             <ion-label position="floating">Username</ion-label>
             <ion-input type="text" class="form-control" id="username"
@@ -26,7 +26,7 @@
           </ion-item>
           <button mat-raised-button id="login-btn"
                   style="align-items: center; width: 100%; margin-top: 4%; background-color: rgba(30,173,80,1); color: antiquewhite;">Login</button>
-                  <button mat-button id="#signup-link"
+          <button mat-button id="#signup-link"
                   style="align-items: center; width: 100%; color: orangered; margin-top: 4%;" [routerLink]="['/signup']">Not yet a member? Sign up!
           </button>
         </form>

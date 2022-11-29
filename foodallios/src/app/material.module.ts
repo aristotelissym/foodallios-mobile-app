@@ -14,6 +14,7 @@ import { MatListModule } from "@angular/material/list";
 import { MatGridListModule } from "@angular/material/grid-list";
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatBadgeModule} from '@angular/material/badge';
+import {MatSidenavModule} from '@angular/material/sidenav';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import {MatBadgeModule} from '@angular/material/badge';
     MatListModule,
     MatGridListModule,
     MatToolbarModule,
-    MatBadgeModule
+    MatBadgeModule,
+    MatSidenavModule
    
   ]
 })

@@ -1,42 +1,46 @@
-<ion-header>
-  <ion-toolbar >
-    <ion-back-button slot="start"></ion-back-button>
-    <ion-title>Sign Up</ion-title>
+<ion-header class="ion-no-border" [translucent]="true">
+  <ion-toolbar>
+    <ion-back-button slot="start" text="Back"></ion-back-button>
+
   </ion-toolbar>
 </ion-header>
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" padding>
   <ion-grid>
-    <ion-row>
-      <ion-title>Login</ion-title>
-    </ion-row>
+    <h1 id="signup-title">Register</h1>
+    <mat-divider></mat-divider>
+    
+    <form style="padding: 5%;" [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+      <ion-item class="form-group" lines="full">
+        <ion-label position="floating">Username</ion-label>
+        <ion-input type="text" class="form-control" id="username" formControlName="username">
+        </ion-input>
+      </ion-item>
+      <ion-item class="form-group">
+        <ion-label position="floating">Password</ion-label>
+        <ion-input type="password" class="form-control" id="password" formControlName="password">
+        </ion-input>
+      </ion-item>
+      <ion-item class="form-group">
+        <ion-label position="floating">Email</ion-label>
+        <ion-input type="email" class="form-control" id="email" formControlName="email">
+        </ion-input>
+      </ion-item>
+      <ion-item class="form-group">
+        <ion-select placeholder="Select Role" formControlName="role">
+          <ion-select-option value="CUSTOMER">Customer</ion-select-option>
+          <ion-select-option value="OWNER">Shop Owner</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-row>
+        <ion-col>
+          <button mat-raised-button id="login-btn"
+          style="align-items: center; width: 100%; margin-top: 4%; background-color: rgb(255, 94, 0); color: antiquewhite;">Submit Form</button>
+  <button mat-button id="#signup-link"
+          style="align-items: center; width: 100%; color: rgba(30,173,80,1); margin-top: 4%;" [routerLink]="['/login']">Already a member?
+  </button>
+        </ion-col>
+      </ion-row>
+    </form>
   </ion-grid>
-  <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
-    <ion-item class="form-group" lines="full">
-      <ion-label position="floating">Username</ion-label>
-      <ion-input type="text" class="form-control" id="username" placeholder="foodallios" formControlName="username">
-      </ion-input>
-    </ion-item>
-    <ion-item class="form-group">
-      <ion-label position="floating">Password</ion-label>
-      <ion-input type="password" class="form-control" id="password" placeholder="pass1234" formControlName="password">
-      </ion-input>
-    </ion-item>
-    <ion-item class="form-group">
-      <ion-label position="floating">Email</ion-label>
-      <ion-input type="email" class="form-control" id="email" placeholder="example@mail.gr" formControlName="email">
-      </ion-input>
-    </ion-item>
-    <ion-item class="form-group">
-      <ion-select placeholder="Select Role" formControlName="role">
-        <ion-select-option value="CUSTOMER">Customer</ion-select-option>
-        <ion-select-option value="OWNER">Shop Owner</ion-select-option>
-      </ion-select>
-    </ion-item>
-    <ion-row>
-      <ion-col>
-        <ion-button expand="block" type="submit" [disabled]="!signUpForm.valid">Signup</ion-button>
-        <ion-button id="#signup-link" type="button" expand="block" color="light" fill="clear" [routerLink]="['/login']">Already a member? Login!</ion-button>
-      </ion-col>
-    </ion-row>
-  </form>
+  
 </ion-content>
