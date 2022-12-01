@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Purchase } from 'src/app/interfaces/purchase.interface';
@@ -40,5 +40,13 @@ export class HomepageService {
   //isValid becomes true. Then QR will be generated. PUT call.
   getUsersPurchase(id: string): Observable<Purchase | undefined> {
     return this.http.get<Purchase>(this.app+`/purchases/${id}`);
+  }
+
+  getUsersCustomerUsername(username: string): Observable<any> {
+    return this.http.get(this.app+`/customers/user-details/${username}`);
+  }
+
+  updateProductQuantity(form: any): Observable<any> {
+    return this.http.patch(this.app+`/update`, form)
   }
 }
