@@ -6,14 +6,13 @@ export class SharedFuns {
 
     constructor (private toastController: ToastController) {}
 
-    async presentToast(position: 'top' | 'middle' | 'bottom', err: string, ic: string, color: string) {
+    async presentToast(position: 'top' | 'middle' | 'bottom', err: string, color: string) {
         const toast = await this.toastController.create({
           message: err,
-          duration: 1500,
+          duration: 2500,
           position: position,
           animated: true,
-          color: color,
-          icon: ic
+          color: color
         })
     
         await toast.present();
