@@ -15,7 +15,9 @@ export class LoginService {
   ) { }
 
   login(form: Login): Observable<any> {
-    return  this.http.post(this.app+'/auth/login', form)
+    return  this.http.post(this.app+'/auth/login', form, { headers: { skip: "true" }})
     
   }
+
+
 }
