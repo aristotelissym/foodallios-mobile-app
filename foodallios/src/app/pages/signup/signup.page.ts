@@ -37,9 +37,9 @@ export class SignupPage implements OnInit {
 
   onSubmit() {
     this.service.register(this.signUpForm.value).subscribe(
-      user => { this.user = user; },
-      () => { this.shared.presentToast('bottom', 'User already exists!', 'global', 'danger') },
-      () => { this.router.navigate(['/homepage'])}
+      user => { this.user = user; this.shared.presentToast('bottom', 'You have successfully registered! Please login using your credentials', 'success')},
+      (err) => { this.shared.presentToast('bottom', 'User already exists!', 'danger'); console.log(err) },
+      () => { this.router.navigate(['/login'])}
       )
   }
 
