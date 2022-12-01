@@ -7,14 +7,13 @@ import { IonicModule, IonicRouteStrategy, ModalController, NavParams } from '@io
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedFuns } from './shared/shared';
 import { MaterialModule } from './material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { QRCodeModule } from 'angularx-qrcode';
-import { IonicStorageModule } from '@ionic/storage-angular';
-import { Drivers, Storage } from '@ionic/storage';
+import { JWTInterceptor } from './shared/helpers/jwt.interceptor';
 
 @NgModule({
   declarations: [
@@ -30,7 +29,6 @@ import { Drivers, Storage } from '@ionic/storage';
     MaterialModule,
     BrowserAnimationsModule,
     QRCodeModule,
-    IonicStorageModule.forRoot()
   ],
   providers: [
     { 
@@ -39,7 +37,9 @@ import { Drivers, Storage } from '@ionic/storage';
     SharedFuns,
     NavParams,
     ModalController,
-    Storage
+    {
+      provide: HTTP_INTERCEPTORS, useClass: JWTInterceptor, multi: true
+    },
   ],
   bootstrap: [
     AppComponent
