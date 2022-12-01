@@ -47,11 +47,10 @@ export class HomepagePage implements OnInit {
   constructor(
     private service: HomepageService,
     private route: ActivatedRoute,
-    private router: Router
   ) { }
 
-  ngOnInit() {
-    this.service.getShopList().subscribe(
+  async ngOnInit() {
+    (await this.service.getShopList()).subscribe(
       shopList => {
         this.shopList = shopList; console.log(shopList)
       },
@@ -73,6 +72,9 @@ export class HomepagePage implements OnInit {
       }
     );
 
+    this.service.getUsersCustomerUsername(sessionStorage.getItem('username')).subscribe(
+      res => sessionStorage.setItem('customerId', res.id)
+    );
 
   }
 
@@ -101,6 +103,11 @@ export class HomepagePage implements OnInit {
         () => { /*this.cartItem = cartItem;*/ },
         (err) => new Error("Something happened " + err)
       );
+
+      this.service.updateProductQuantity({
+        id: tableOrder.productId,
+        quantity: tableOrder.quantity
+      })
     }
     )
 
