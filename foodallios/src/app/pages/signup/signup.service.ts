@@ -15,7 +15,7 @@ export class SingupService {
   ) { }
 
   register(form: SignUp): Observable<any> {
-    return this.http.post(this.app+'/auth/register', form)
+    return this.http.post(this.app+'/auth/register', form, { responseType: 'text'})
     
   }
 }
