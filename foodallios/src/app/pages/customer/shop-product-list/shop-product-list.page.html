@@ -1,8 +1,8 @@
-<ion-header :translucent="true">
+<ion-header translucent="true">
   <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button text="Places"></ion-back-button>
-    </ion-buttons>
+      <ion-buttons slot="start">
+        <ion-back-button slot="start" style="color: black;"></ion-back-button>
+      </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -24,32 +24,38 @@
     <h2 style="margin-left: 4%;" style="padding-bottom: 4px; border-bottom: solid 1px #7d7d7d; border-radius: 4%;">What
       is Left?</h2>
     <h1 *ngIf="productList==null">We're sorry! There are no available items at the moment</h1>
-    <mat-card *ngFor="let product of productList; index as i" id="product-card">
+    <mat-card *ngFor="let product of productList; index as i" id="product-card" (click)="getProductDetails(product.shopId, product.id)">
       <mat-card-title-group style="margin-bottom: 2px;">
-        <mat-card-title>{{ product.title }}</mat-card-title>
+        <mat-card-title style="font-size: 22px;">{{ product.title }}</mat-card-title>
         <div mat-card-avatar class="example-header-image"></div>
       </mat-card-title-group>
-      <mat-card-content (click)="getProductDetails(product.shopId, product.id)">
-        {{ product.description }}
+      <mat-card-content style="font-size: 12px;" >
+        <p>
+          {{ product.description }}
+        </p>
       </mat-card-content>
     </mat-card>
   </ion-grid>
 
-  <ion-modal [initialBreakpoint]="0.65" [breakpoints]="[0, 0.50,0.75, 1]" (willDismiss)="onWillDismiss($event)"
+  <ion-modal [initialBreakpoint]="0.75" [breakpoints]="[0, 0.50,0.75, 1]" (willDismiss)="onWillDismiss($event)"
     [isOpen]="$isOpen">
     <ng-template>
       <ion-img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/card-media.png"></ion-img>
 
       <ion-content class="ion-padding">
-        <h3>{{ productDetails.title }}</h3>
-        <h4>Description: {{ productDetails.description }}</h4>
-        <h5>Price: {{ productDetails.price }}</h5>
+        <h3 style="font-size: 17px;">{{ productDetails.title }}</h3>
+        <p>{{ productDetails.description }}</p>
+        <h4>
+          <strong>
+            {{ productDetails.price | currency: 'EUR' }}
+          </strong>
+        </h4>
           <ion-col>
             <div class="counter__section">
-              <button mat-mini-fab (click)="decrement()" style="background-color: rgb(100, 100, 100);">-</button>
+              <button mat-mini-fab (click)="decrement()" style="background-color: rgb(152, 152, 152);color: rgb(255, 194, 119);">-</button>
               <p style="margin-top: 15px;">{{count}}</p>
               <button mat-mini-fab (click)="increment(productDetails.quantity)"
-                style="background-color: rgb(100, 100, 100); justify-content: center;">
+                style="background-color: rgb(152, 152, 152);color: rgb(255, 194, 119); justify-content: center;">
                 +
               </button>
             </div>
@@ -65,3 +71,6 @@
     </ng-template>
   </ion-modal>
 </ion-content>
+
+<ion-footer style="padding-top: 4%;">
+</ion-footer>

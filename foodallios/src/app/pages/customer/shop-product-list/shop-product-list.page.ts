@@ -81,6 +81,8 @@ export class ShopProductListPage implements OnInit {
       createdAt: new Date()
     }
     this.sharedFuns.updateSessionStorage('productCart', this.productToCart)
+        .then(() => this.sharedFuns.presentToast("top", "Successfully been added to the Cart! &#127791 &#127830", "primary"))
+        .catch((err) => new Error("Something happened =>" +err))
     console.log(sessionStorage.getItem('productCart'))
   }
 

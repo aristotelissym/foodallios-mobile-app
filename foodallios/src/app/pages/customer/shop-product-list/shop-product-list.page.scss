@@ -5,7 +5,7 @@ ion-toolbar {
 
 ion-content {
     --background: #131313;
-    // --color: rgb(203, 122, 0);
+    --color: rgb(244, 244, 244);
 }
 
 
@@ -39,4 +39,6 @@ img {
     display: flex;
     align-items: center;
     justify-content: space-between;
-  }
+    margin-left: 10%;
+    margin-right: 10%;
+}
