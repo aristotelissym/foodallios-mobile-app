@@ -1,8 +1,9 @@
 <ion-header>
-  <ion-toolbar>
-    <mat-icon type="button" mat-button slot="start" style="margin-left: 5%;">menu</mat-icon>
+  <ion-toolbar style="color: rgb(252, 252, 252);">
+    <mat-icon type="button" mat-button slot="start" style="margin-left: 5%;" (click)="openSideNav()">menu</mat-icon>
     <ion-title> FoodAllios </ion-title>
-    <mat-icon (click)="getCartContent('productCart')" matBadgeColor="accent" slot="end" style="margin-right: 5%;">
+    <mat-icon (click)="getCartContent('productCart')" matBadge="2" matBadgeColor="accent" slot="end"
+      style="margin-right: 5%;">
       shopping_cart</mat-icon>
   </ion-toolbar>
 
@@ -27,30 +28,58 @@
       </ion-row> -->
 
     <h3 style="border-bottom: solid 1px #7d7d7d; padding-left: 8px;"> What's the plan for today?</h3>
-    <mat-card *ngFor="let shop of shopList; index as i" id="shop-card">
+    <mat-card *ngFor="let shop of shopList; index as i" id="shop-card"
+      [routerLink]="['../shop-product-list', shop.id, [shop.name, shop.wrkHours, shop.address]]">
       <!-- <mat-card-header>
         <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
 
         </mat-card-header> -->
-      <mat-card-title-group style="margin-bottom: 2px;">
+      <mat-card-title-group>
         <mat-card-subtitle style="color: var(--ion-color-fasecondary);">{{ shop.category }}</mat-card-subtitle>
-        <mat-card-title>{{ shop.name }}</mat-card-title>
+        <mat-card-title style="font-size: 22px;">{{ shop.name }}</mat-card-title>
       </mat-card-title-group>
 
-      <mat-card-content>
+      <mat-card-content style="font-size: 12px;">
         {{ shop.moto }}
       </mat-card-content>
       <mat-divider></mat-divider>
 
-      <mat-card-footer>
-        <button mat-button fill="clear"
-          [routerLink]="['../shop-product-list', shop.id, [shop.name, shop.wrkHours, shop.address]]"
-          (click)="moreBtn(shop)">
-          more</button>
+      <mat-card-footer style="text-align: end;">
+        <!-- <mat-icon style="transform: translate(25%, 25%); vertical-align: middle; font-size: 14px;">store</mat-icon> -->
+        <div>
+          <span>
+            A: {{ shop.address }} ·
+          </span>
+          <span>
+            <!-- <mat-icon style="transform: translate(25%, 25%); vertical-align: middle; font-size: 14px;">access_time</mat-icon> -->
+            H: {{ shop.wrkHours }}
+          </span>
+        </div>
       </mat-card-footer>
 
     </mat-card>
   </ion-grid>
+
+  <!-- Side Menu -->
+  <ion-menu open="true" contentId="main-content">
+    <ion-content>
+      <mat-list style="padding-top: 35%;">
+        <mat-list-item style="color: whitesmoke">
+          <mat-icon matListItemIcon>perm_identity</mat-icon>
+          <div matListItemTitle>My Profile</div>
+        </mat-list-item>
+        <mat-list-item style="color: whitesmoke">
+          <mat-icon matListItemIcon>local_pizza</mat-icon>
+          <div matListItemTitle>My Orders</div>
+        </mat-list-item>
+        <mat-list-item style="color: rgb(255, 58, 58);">
+          <mat-icon matListItemIcon>cancel</mat-icon>
+          <div matListItemTitle>Logout</div>
+        </mat-list-item>
+      </mat-list>
+    </ion-content>
+  </ion-menu>
+  <!-- End of Side Menu -->
 
   <!-- Cart Modal -->
   <ion-modal (willDismiss)="onWillDismiss($event)" [isOpen]="$isOpen">
@@ -58,7 +87,7 @@
       <ion-header>
         <ion-toolbar>
           <ion-buttons slot="start">
-            <ion-button (click)="cancel()"></ion-button>
+            <ion-button (click)="cancel()">Back</ion-button>
           </ion-buttons>
         </ion-toolbar>
       </ion-header>
@@ -72,21 +101,23 @@
             <mat-icon style="margin-right: 5%;" matListItemIcon>fastfood</mat-icon>
             <div matListSubheader>{{ product.title }} </div>
             <div matListItemLine>
-              <span matListItem>Price: {{ product.orderPrice | currency:'EUR'}}</span>
+              <span matListItem>&nbsp;&nbsp;{{ product.orderPrice | currency:'EUR'}}</span>
             </div>
             <mat-divider style="color: whitesmoke;"></mat-divider>
           </mat-list-item>
+          <!-- <mat-list-item style="color: whitesmoke">Total Price: {{ totalPriceShow }} </mat-list-item> -->
         </mat-list>
 
+
         <ion-button (click)="submitOrder('productCart')" expand="block" color="success"
-          style="margin-left: 4%; margin-right: 4%;">
+          style="margin-left: 6%; margin-right: 6%;">
           Submit Order
         </ion-button>
 
         <div class="qrCodeImage">
           <qrcode [qrdata]="qrData" [allowEmptyString]="true" [ariaLabel]="'Your Order'" [cssClass]="'center'"
             [colorDark]="'#083d0d'" [colorLight]="'#fffbf3'" [elementType]="'img'" [errorCorrectionLevel]="'H'"
-            [imageHeight]="75" [imageWidth]="75" [margin]="4" [scale]="1" [title]="'A custom title attribute'"
+            [imageHeight]="75" [imageWidth]="75" [margin]="5" [scale]="1" [title]="'A custom title attribute'"
             [width]="300"></qrcode>
         </div>
 

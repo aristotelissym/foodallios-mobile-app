@@ -1,11 +1,12 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { IonModal } from '@ionic/angular';
+import { IonMenu, IonModal } from '@ionic/angular';
 import { Shop } from 'src/app/interfaces/shop.interface';
 import { HomepageService } from './homepage.service';
 import { OverlayEventDetail } from '@ionic/core';
 import { TableOrder } from 'src/app/interfaces/tableOrder.interface';
 import { Purchase } from 'src/app/interfaces/purchase.interface';
+import { SharedFuns } from 'src/app/shared/shared';
 
 
 @Component({
@@ -15,6 +16,7 @@ import { Purchase } from 'src/app/interfaces/purchase.interface';
 })
 export class HomepagePage implements OnInit {
   @ViewChild(IonModal) modal: IonModal;
+  @ViewChild(IonMenu) sidemenu: IonMenu;
 
   slideOpts = {
     initialSlide: 1,
@@ -31,7 +33,9 @@ export class HomepagePage implements OnInit {
   cartItem: TableOrder;
   cart = [];
   qrData?;
-  cartSize: number = (sessionStorage.getItem('productCart')).length;
+  cartSize: number = (JSON.stringify(sessionStorage.getItem('productCart'))).length;
+  totalPriceShow?;
+  
 
   //Temp helper to init purchase.
   init_purchase = {
@@ -47,6 +51,7 @@ export class HomepagePage implements OnInit {
   constructor(
     private service: HomepageService,
     private route: ActivatedRoute,
+    private sharedFuns: SharedFuns
   ) { }
 
   async ngOnInit() {
@@ -115,6 +120,8 @@ export class HomepagePage implements OnInit {
     this.service.validPurchase(validatePurchaseForm).subscribe(updatedPurchaseForm => console.log(updatedPurchaseForm))
     
     this.qrData = JSON.stringify(this.service.getUsersPurchase(sessionStorage.getItem('purchaseId')));
+
+    this.showDetails();
   }
 
   //Get product list of Shop {{ shop.id }}
@@ -126,13 +133,24 @@ export class HomepagePage implements OnInit {
   async getCartContent(sessionCart: string) {
 
     this.$isOpen = true;
+    let totalPriceShow;
 
     let prop = JSON.parse(sessionStorage.getItem(sessionCart));
     console.log(prop);
 
     await prop.forEach(product => {
       this.productCart.push(product)
+      console.log(product)
+
+      this.totalPriceShow = product.orderPrice;
     });
+
+    totalPriceShow = this.totalPriceShow;
+  }
+
+  //open side menu
+  openSideNav() {
+    this.sidemenu.open(true);
   }
 
 
@@ -146,5 +164,9 @@ export class HomepagePage implements OnInit {
 
   cancel() {
     this.modal.dismiss(null, 'cancel');
+  }
+
+  showDetails() {
+    this.sharedFuns.presentToast("top", "Your order is Ready! &#128523 Keep this QR image and to get your order! &#128692", "primary")
   }
 }

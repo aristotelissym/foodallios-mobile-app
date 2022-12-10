@@ -13,6 +13,10 @@ ion-grid {
     --ion-grid-width: 100%;
 }
 
+mat-list-item-content {
+    color: aliceblue;
+}
+
 .example-header-image {
     background-image: url('https://ionicframework.com/docs/img/demos/card-media.png');
     background-size: cover;
@@ -22,15 +26,24 @@ ion-grid {
     // background-color: rgb(46, 46, 46);
     background-color: #151515;
     color:rgb(255, 251, 240);
-    margin-bottom: 4px;
+    margin-bottom: 8px;
     box-shadow: none;
     border-left: solid 4px  var(--ion-color-fasecondary);
+}
+
+.mat-card-footer.mat-card-footer {
+
+    font-size: 12px;
+    // margin-left: 1%;
+    // padding: 1%;
+    align-items: end;
 }
 
 /* The div container */
 .qrcodeImage {
     display: flex;
     flex: 1;
+    margin-left: 4px;
 }
   
 /* Add custom styles here */
